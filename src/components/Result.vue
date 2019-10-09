@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-table striped hover :items="income_table"   >
-      
+    <b-table striped hover :items="income_table" caption-top  >
+        <template v-slot:table-caption>Income after taxes:</b></template>
     </b-table>
   </div>
 </template>
