@@ -1,24 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <reallocation :allocations="realloc_choices" v-model="chosen_reallocation"></reallocation>
+    <tax-rates :rates="tax_rates" v-model="chosen_tax_rate"></tax-rates>
+    <result></result>
+    <h4>Tax rate: {{chosen_tax_rate}}</h4>
+    <h4>Reallocation: {{chosen_reallocation}}</h4>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Reallocation from "./components/Reallocation";
+import TaxRate from "./components/TaxRate";
+import Result from "./components/Result";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    reallocation: Reallocation,
+    "tax-rates": TaxRate,
+    result: Result
+  },
+  data() {
+    return {
+      realloc_choices: [1, 2, 3],
+      tax_rates: [3, 4, 5],
+      chosen_tax_rate: 'jopa',
+      chosen_reallocation: undefined
+    };
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
