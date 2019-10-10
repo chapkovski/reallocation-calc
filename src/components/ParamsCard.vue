@@ -2,7 +2,6 @@
   <div>
     <b-card
       sub-title="Not to be shown to user"
-      style="max-width: 40rem;"
       class="mb-2"
       header="Parameters:"
       header-text-variant="white"
@@ -11,7 +10,11 @@
       border-variant="dark"
     >
       <b-card-text>
-        <ind-params v-for="(param,i) in params_list" :indparams="param" :key="i"></ind-params>
+        <div class="container fluid">
+          <div class="row">
+            <ind-params v-for="(param,i) in params_list" :indparams="param" :key="i"></ind-params>
+          </div>
+        </div>
       </b-card-text>
     </b-card>
   </div>
@@ -25,7 +28,7 @@ export default {
     params: Object
   },
   data() {
-    let params_list = Object.entries(this.params)
+    let params_list = Object.entries(this.params);
     return { params_list: params_list };
   },
 

@@ -1,40 +1,48 @@
 <template>
   <div id="app">
     <b-container class="m-3">
-      <params-card :params="params"></params-card>
-      <b-card
-        header="What will user see:"
-        header-text-variant="white"
-        header-tag="header"
-        header-bg-variant="primary"
-        border-variant="primary"
-      >
-        <b-row>
-          <b-col cols="4">
-            <reallocation :allocations="realloc_choices" v-model="chosen_reallocation"></reallocation>
-            <tax-rates
-              :rates="tax_rates"
-              v-model="chosen_tax_rate"
-              v-if="chosen_reallocation!=undefined"
-            ></tax-rates>
-          </b-col>
-          <b-col cols="4" align-h="center">
-            <transition name="fade">
-              <b-alert :show="chosen_reallocation===undefined">Please choose reallocation option</b-alert>
-            </transition>
-            <b-alert
-              variant="danger"
-              :show="chosen_reallocation!=undefined && chosen_tax_rate===undefined "
-            >Now choose the tax rate</b-alert>
+      <div class="row">
+        <div class="col">
+          <params-card :params="params"></params-card>
+          <b-card
+            header="What will user see:"
+            header-text-variant="white"
+            header-tag="header"
+            header-bg-variant="primary"
+            border-variant="primary"
+          >
+            <div class="container-fluid">
+              <div class="row">
+                <div class=" col-md-4">
+                  <reallocation :allocations="realloc_choices" v-model="chosen_reallocation"></reallocation>
+                  <tax-rates
+                    :rates="tax_rates"
+                    v-model="chosen_tax_rate"
+                    v-if="chosen_reallocation!=undefined"
+                  ></tax-rates>
+                </div>
+                <div class=" col-md-8">
+                  <transition name="fade">
+                    <b-alert
+                      :show="chosen_reallocation===undefined"
+                    >Please choose reallocation option</b-alert>
+                  </transition>
+                  <b-alert
+                    variant="danger"
+                    :show="chosen_reallocation!=undefined && chosen_tax_rate===undefined "
+                  >Now choose the tax rate</b-alert>
 
-            <result
-              :tax="chosen_tax_rate"
-              :chosen_paramset="chosen_paramset"
-              v-if="chosen_paramset && chosen_tax_rate!=undefined"
-            ></result>
-          </b-col>
-        </b-row>
-      </b-card>
+                  <result
+                    :tax="chosen_tax_rate"
+                    :chosen_paramset="chosen_paramset"
+                    v-if="chosen_paramset && chosen_tax_rate!=undefined"
+                  ></result>
+                </div>
+              </div>
+            </div>
+          </b-card>
+        </div>
+      </div>
     </b-container>
   </div>
 </template>

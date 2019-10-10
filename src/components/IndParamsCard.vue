@@ -1,6 +1,6 @@
 <template>
-  <div class="m-1">
-      <b-table striped hover :items="items" :fields="fields" caption-top small>
+  <div class="m-1 col">
+      <b-table striped hover :items="items" :fields="fields" caption-top small responsive>
          <template v-slot:table-caption>Reform: <b>{{format_allocation}}</b></template>
       </b-table>
     
