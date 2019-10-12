@@ -13,7 +13,7 @@
           >
             <div class="container-fluid">
               <div class="row">
-                <div class=" col-md-4">
+                <div class="col-md-4 text-center">
                   <reallocation :allocations="realloc_choices" v-model="chosen_reallocation"></reallocation>
                   <tax-rates
                     :rates="tax_rates"
@@ -21,23 +21,26 @@
                     v-if="chosen_reallocation!=undefined"
                   ></tax-rates>
                 </div>
-                <div class=" col-md-8">
+                <b-col class="col-md-8" align-self="center">
+                  <div
+                    class="alert alert-primary"
+                    v-if="chosen_reallocation===undefined"
+                  >Please choose one of the options</div>
+
                   <transition name="fade">
                     <b-alert
-                      :show="chosen_reallocation===undefined"
-                    >Please choose reallocation option</b-alert>
+                      variant="danger"
+                      :show="chosen_reallocation!=undefined && chosen_tax_rate===undefined "
+                    >Now choose for which tax rate you want to see the results</b-alert>
                   </transition>
-                  <b-alert
-                    variant="danger"
-                    :show="chosen_reallocation!=undefined && chosen_tax_rate===undefined "
-                  >Now choose the tax rate</b-alert>
-
-                  <result
-                    :tax="chosen_tax_rate"
-                    :chosen_paramset="chosen_paramset"
-                    v-if="chosen_paramset && chosen_tax_rate!=undefined"
-                  ></result>
-                </div>
+                  <transition name="fade">
+                    <result
+                      :tax="chosen_tax_rate"
+                      :chosen_paramset="chosen_paramset"
+                      v-if="chosen_paramset && chosen_tax_rate!=undefined"
+                    ></result>
+                  </transition>
+                </b-col>
               </div>
             </div>
           </b-card>
@@ -70,26 +73,26 @@ export default {
       chosen_reallocation: undefined,
       params: {
         0: {
-          H: {
-            capacity: 1,
+          A: {
+            capacity: 4,
             productivity: 1,
             number: 2
           },
-          L: {
-            capacity: 1,
+          B: {
+            capacity: 4,
             productivity: 1,
             number: 2
           }
         },
         1: {
-          H: {
-            capacity: 1,
-            productivity: 4.6,
-            number: 2
-          },
-          L: {
+          A: {
             capacity: 0,
             productivity: 0,
+            number: 2
+          },
+          B: {
+            capacity: 4,
+            productivity: 4.6,
             number: 2
           }
         }
@@ -114,9 +117,10 @@ export default {
   margin-top: 60px;
 }
 .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.fade-leave-to {
+  transition: opacity 1s;
 }
+
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }

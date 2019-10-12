@@ -1,6 +1,6 @@
 <template>
   <div>
-      <b-form-group label="Choose the reallocation:">
+      <b-form-group label="Choose an option:">
       <b-form-radio-group
         id="btn-radios-3"
         v-model="selected"
@@ -28,9 +28,8 @@ export default {
     },
     computed: {
       options: function() {
-        let b = this.allocations.map(i => {
-          let p = parseFloat(i * 100).toFixed(0) + "%";
-          return { text: `Allocation ${p}`, value: i };
+        let b = this.allocations.map((i, index) => {
+          return { text: `Option ${index+1}`, value: i };
         });
         return b;
       }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-table striped hover :items="income_table" caption-top  >
-        <template v-slot:table-caption>Income after tax:</template>
+    <b-table striped responsive hover :items="income_table" caption-top>
+      
     </b-table>
   </div>
 </template>
@@ -17,15 +17,18 @@ export default {
     return {};
   },
   methods: {
-    income: function(i) {
-      return i.capacity * i.productivity * (1 - this.tax);
+    income_before_tax: function(i) {
+      return (i.capacity * i.productivity).toFixed(2);
+    },
+    income_after_tax: function(i) {
+      return (this.income_before_tax(i) * (1 - this.tax) + this.ind_share).toFixed(2);
     }
   },
   computed: {
     total_tax: function() {
       let vals = Object.values(this.chosen_paramset);
       let t = 0;
-      vals.forEach((k, v) => {
+      vals.forEach(k => {
         t += k.capacity * k.productivity * k.number;
       });
       return t * this.tax;
@@ -33,7 +36,7 @@ export default {
     num_players: function() {
       let vals = Object.values(this.chosen_paramset);
       let n = 0;
-      vals.forEach((k, v) => {
+      vals.forEach(k => {
         n += k.number;
       });
       return n;
@@ -43,10 +46,18 @@ export default {
     },
     income_table: function() {
       let cp = this.chosen_paramset;
-      let indshare = this.ind_share;
+      
       let data = [];
       Object.keys(cp).forEach(item => {
-        let i = { player_type: item, income: (this.income(cp[item]) + indshare).toFixed(2) };
+        let rec = cp[item];
+        let i = {
+          participant_type: item,
+          items_to_do: rec.capacity,
+          "points per item": rec.productivity,
+          income_before_tax: this.income_before_tax(rec),
+          income_after_tax: this.income_after_tax(rec)
+        };
+
         data.push(i);
       });
       return data;

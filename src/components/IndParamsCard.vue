@@ -18,11 +18,11 @@ export default {
     let params_dict = this.indparams[1];
     let items = Object.keys(params_dict).map(function(key) {
       let obj = params_dict[key];
-      obj.player_type = key;
+      obj.participant_type = key;
       return obj;
     });
     return {
-      fields: ['player_type', 'capacity', 'productivity','number'],
+      fields: ['participant_type', 'capacity', 'productivity','number'],
       format_allocation: allocation==='0'?'No':'Yes',
       items: items
     };

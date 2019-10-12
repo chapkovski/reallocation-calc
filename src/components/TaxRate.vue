@@ -1,6 +1,7 @@
 <template>
   <div>
-      <b-form-group label="Choose the tax rate:">
+      <b-form-group label="Choose for which tax rate  you want to see the results:" >
+        <template v-slot:label>Choose for which tax rate <br>  you want to see the results:</template>
       <b-form-radio-group
         id="btn-radios-3"
         v-model="selected"
