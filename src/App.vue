@@ -120,8 +120,8 @@ export default {
 .fade-leave-to {
     transition: opacity 1s;
 }
-.nopadding{margin-left:0px!important;
-margin-right:0px!important}
+.nopadding{padding-left:0px!important;
+padding-right:0px!important}
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
