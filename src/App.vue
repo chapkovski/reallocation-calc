@@ -1,11 +1,12 @@
 <template>
   <div id="app">
+    
     <b-container class="m-3">
       <div class="row">
         <div class="col">
-          <params-card :params="params"></params-card>
+    
           <b-card
-            header="What will user see:"
+            header="Choose possible options:"
             header-text-variant="white"
             header-tag="header"
             header-bg-variant="primary"
@@ -55,10 +56,11 @@ import Reallocation from "./components/Reallocation";
 import TaxRate from "./components/TaxRate";
 import Result from "./components/Result";
 import ParamsCard from "./components/ParamsCard";
-
+import AnimatedNumber from "./components/AnimatedNumber";
 export default {
   name: "app",
   components: {
+    AnimatedNumber,
     reallocation: Reallocation,
     "tax-rates": TaxRate,
     result: Result,
@@ -66,10 +68,11 @@ export default {
   },
   data() {
     return {
+      numberOfAlligators: 10,
       show: true,
       realloc_choices: [0, 1],
       tax_rates: [0, 0.3, 0.4348],
-      chosen_tax_rate: undefined,
+      chosen_tax_rate: 0,
       chosen_reallocation: undefined,
       params: {
         0: {
@@ -102,6 +105,11 @@ export default {
   computed: {
     chosen_paramset: function() {
       return this.params[this.chosen_reallocation];
+    }
+  },
+  methods: {
+    addAlligators() {
+      this.numberOfAlligators += 500;
     }
   }
 };

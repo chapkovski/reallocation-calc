@@ -6,9 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy":"npm run build; push-dir --dir=dist --branch=gh-pages --cleanup --force"
+    "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup --force"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "^18.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
