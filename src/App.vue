@@ -1,10 +1,10 @@
 <template>
     <div id="app">
-        <b-container class="m-3">
+        <b-container class="my-3 nopadding">
             <div class="row">
                 <div class="col">
                     <b-card
-                        header="Choose possible options:"
+                        header="Choose possible1 options:"
                         header-text-variant="white"
                         header-tag="header"
                         header-bg-variant="primary"
@@ -120,7 +120,8 @@ export default {
 .fade-leave-to {
     transition: opacity 1s;
 }
-
+.nopadding{margin-left:0px!important;
+margin-right:0px!important}
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }

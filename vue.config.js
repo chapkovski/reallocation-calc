@@ -2,6 +2,6 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? '/reallocation-calc/'
       : '/',
-      outputDir: './calc',
+      outputDir: '../reallocation-calc',
       filenameHashing:false
   }
