@@ -67,10 +67,10 @@ export default {
         return {
             show: true,
             realloc_choices: [0, 1],
-            tax_rates: window.taxes,
+            tax_rates: this.taxes,
             chosen_tax_rate: undefined,
             chosen_reallocation: undefined,
-            params: window.params
+            params: this.params
         };
     },
     computed: {
