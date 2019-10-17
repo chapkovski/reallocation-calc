@@ -67,35 +67,10 @@ export default {
         return {
             show: true,
             realloc_choices: [0, 1],
-            tax_rates: [0, 0.3, 0.4348],
+            tax_rates: window.taxes,
             chosen_tax_rate: undefined,
             chosen_reallocation: undefined,
-            params: {
-                0: {
-                    A: {
-                        capacity: 4,
-                        productivity: 1,
-                        number: 2
-                    },
-                    B: {
-                        capacity: 4,
-                        productivity: 1,
-                        number: 2
-                    }
-                },
-                1: {
-                    A: {
-                        capacity: 0,
-                        productivity: 0,
-                        number: 2
-                    },
-                    B: {
-                        capacity: 4,
-                        productivity: 4.6,
-                        number: 2
-                    }
-                }
-            }
+            params: window.params
         };
     },
     computed: {
