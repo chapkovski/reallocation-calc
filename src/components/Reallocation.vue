@@ -1,6 +1,6 @@
 <template>
   <div>
-      <b-form-group label="Choose an option:">
+      <b-form-group label="Choose a setting:">
       <b-form-radio-group
         id="btn-radios-3"
         v-model="selected"
@@ -29,7 +29,7 @@ export default {
     computed: {
       options: function() {
         let b = this.allocations.map((i, index) => {
-          return { text: `Option ${index+1}`, value: i };
+          return { text: `Setting ${index+1}`, value: i };
         });
         return b;
       }

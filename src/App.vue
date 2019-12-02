@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">
                     <b-card
-                        header="Choose possible1 options:"
+                        header="Choose possible1 settings:"
                         header-text-variant="white"
                         header-tag="header"
                         header-bg-variant="primary"
@@ -27,7 +27,7 @@
                                     <div
                                         class="alert alert-primary"
                                         v-if="chosen_reallocation===undefined"
-                                    >Please choose one of the options</div>
+                                    >Please choose one of the settings</div>
 
                                     <transition name="fade">
                                         <b-alert
